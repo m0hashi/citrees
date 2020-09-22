@@ -4,7 +4,7 @@ from joblib import delayed, Parallel
 from numba import njit
 import numpy as np
 
-from scorers import c_dcor, mc_fast, mi, pcor, py_dcor, rdc, rdc_fast
+from scorers import mc_fast, mi, pcor, py_dcor, rdc, rdc_fast
 
 
 ##########################
@@ -184,7 +184,8 @@ def permutation_test_dcor_parallel(x, y, B=100, n_jobs=-1,
     np.random.seed(random_state)
 
     # Define function handle
-    func = py_dcor if n < 500 else c_dcor
+    # func = py_dcor if n < 500 else c_dcor
+    func = py_dcor
 
     # Estimate correlation from original data
     theta = np.fabs(func(x, y))

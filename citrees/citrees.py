@@ -10,7 +10,7 @@ import warnings
 warnings.simplefilter('ignore')
 
 # Package imports
-from externals.six.moves import range
+# from externals.six.moves import range
 from feature_selectors import (permutation_test_mc, permutation_test_mi,
                                permutation_test_dcor, permutation_test_pcor,
                                permutation_test_rdc)

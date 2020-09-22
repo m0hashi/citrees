@@ -8,33 +8,33 @@ import pandas as pd
 from scipy.stats import rankdata as rank
 from sklearn.feature_selection import mutual_info_classif
 
-from externals.six.moves import range
+# from externals.six.moves import range
 
 #######################
 """CREATE C WRAPPERS"""
 #######################
 
 # Define constants for wrapping C functions
-SHARED_OBJECT_DIR = join(dirname(__file__), 'bin')
+# SHARED_OBJECT_DIR = join(dirname(__file__), 'bin')
 
 # Weighted distance correlation
-CFUNC_DCORS_PATH               = join(SHARED_OBJECT_DIR, 'dcor.so')
-CFUNC_DCORS_DLL                = ctypes.CDLL(CFUNC_DCORS_PATH)
-CFUNC_DCORS_DLL.wdcor.argtypes = (
-        ctypes.POINTER(ctypes.c_double), # x
-        ctypes.POINTER(ctypes.c_double), # y
-        ctypes.c_int,                    # n
-        ctypes.POINTER(ctypes.c_double)  # w
-        )
-CFUNC_DCORS_DLL.wdcor.restype  = ctypes.c_double
+# CFUNC_DCORS_PATH               = join(SHARED_OBJECT_DIR, 'dcor.so')
+# CFUNC_DCORS_DLL                = ctypes.CDLL(CFUNC_DCORS_PATH)
+# CFUNC_DCORS_DLL.wdcor.argtypes = (
+#         ctypes.POINTER(ctypes.c_double), # x
+#         ctypes.POINTER(ctypes.c_double), # y
+#         ctypes.c_int,                    # n
+#         ctypes.POINTER(ctypes.c_double)  # w
+#         )
+# CFUNC_DCORS_DLL.wdcor.restype  = ctypes.c_double
 
 # Unweighted distance correlation
-CFUNC_DCORS_DLL.dcor.argtypes = (
-        ctypes.POINTER(ctypes.c_double), # x
-        ctypes.POINTER(ctypes.c_double), # y
-        ctypes.c_int,                    # n
-        )
-CFUNC_DCORS_DLL.dcor.restype  = ctypes.c_double
+# CFUNC_DCORS_DLL.dcor.argtypes = (
+#         ctypes.POINTER(ctypes.c_double), # x
+#         ctypes.POINTER(ctypes.c_double), # y
+#         ctypes.c_int,                    # n
+#         )
+# CFUNC_DCORS_DLL.dcor.restype  = ctypes.c_double
 
 
 ###################################

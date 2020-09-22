@@ -1,9 +1,9 @@
 from __future__ import absolute_import, print_function
 
-from numba import autojit
+from numba import jit
 import numpy as np
 
-from externals.six.moves import range
+# from externals.six.moves import range
 
 
 def bayes_boot_probs(n):
@@ -23,7 +23,7 @@ def bayes_boot_probs(n):
     return p/p.sum()
 
 
-@autojit(nopython=True, cache=True, nogil=True)
+@jit(nopython=True, cache=True, nogil=True)
 def auc_score(y_true, y_prob):
     """ADD
     
